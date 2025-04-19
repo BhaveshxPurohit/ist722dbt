@@ -8,5 +8,5 @@ sources:
       - name: DateDimension
         columns:
           - name: DateKey
-        tests:
-          - unique
+          tests:
+            - unique
