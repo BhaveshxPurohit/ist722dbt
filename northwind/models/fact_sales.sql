@@ -15,7 +15,7 @@ stg_order_details as (
         Quantity,
         Discount,
         (Quantity * UnitPrice) as costprice,
-        (Quantity * UnitPrice * Discount) as discount,
+        (Quantity * UnitPrice * Discount) as discountamount,  -- ✅ renamed
         (Quantity * UnitPrice) - (Quantity * UnitPrice * Discount) as sellingprice
     from {{ source('northwind', 'Order_Details') }}
 )
@@ -29,7 +29,7 @@ select
     d.UnitPrice,
     d.Quantity,
     d.costprice,
-    d.discount,
+    d.discountamount,  -- ✅ updated to match alias
     d.sellingprice
 from stg_orders o
 join stg_order_details d on o.OrderID = d.OrderID

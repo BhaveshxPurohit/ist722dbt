@@ -24,12 +24,12 @@ select
     d_date.*,
     d_product.*,
     f.orderid,
-    f.datekey,
-    f.productkey,
+    -- f.datekey,         -- Already in d_date.*
+    -- f.productkey,      -- ❌ Remove this line
     f.unitprice,
     f.quantity,
     f.costprice,
-    f.discount,
+    f.discountamount,
     f.sellingprice
 from f_sales f
 left join d_customer on f.customerkey = d_customer.customerkey
